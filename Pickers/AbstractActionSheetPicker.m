@@ -104,10 +104,11 @@ BOOL isIPhone4() {
             NSAssert(NO, @"Invalid origin provided to ActionSheetPicker ( %@ )", origin);
 
         // Initialize default bar buttons so they can be overridden before the 'showActionSheetPicker' is called
-        UIBarButtonItem *cancelBtn = [self createButtonWithType:UIBarButtonSystemItemCancel target:self action:@selector(actionPickerCancel:)];
-        [self setCancelBarButtonItem:cancelBtn];
-        UIBarButtonItem *doneButton = [self createButtonWithType:UIBarButtonSystemItemDone target:self action:@selector(actionPickerDone:)];
-        [self setDoneBarButtonItem:doneButton];
+        self.cancelButton = [self createButtonWithType:UIBarButtonSystemItemCancel target:self action:@selector(actionPickerCancel:)];
+        
+        [self setCancelBarButtonItem:self.cancelButton];
+        self.doneButton = [self createButtonWithType:UIBarButtonSystemItemDone target:self action:@selector(actionPickerDone:)];
+        [self setDoneBarButtonItem:self.doneButton];
         
         //allows us to use this without needing to store a reference in calling class
         self.selfReference = self;
